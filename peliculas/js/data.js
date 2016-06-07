@@ -80,7 +80,7 @@ var data =[{
         "rated": "R",
         "released": "20 May 2016",
         "runtime": "116 min",
-        "genre": ["Action",
+        "genre": ["action",
             "comedy",
             "crime"
         ],
@@ -129,7 +129,7 @@ var data =[{
         "rated": "R",
         "released": "12 Feb 2016",
         "runtime": "108 min",
-        "genre": ["Action",
+        "genre": ["action",
             "adventure",
             "comedy"
         ],
@@ -155,7 +155,7 @@ var data =[{
         "rated": "N/A",
         "released": "05 Aug 2016",
         "runtime": "N/A",
-        "genre": ["Action",
+        "genre": ["action",
             "adventure",
             "crime"
         ],
@@ -181,7 +181,7 @@ var data =[{
         "rated": "R",
         "released": "13 May 2016",
         "runtime": "98 min",
-        "genre": ["Crime",
+        "genre": ["crime",
             "drama",
             "thriller"
         ],
@@ -206,7 +206,7 @@ var data =[{
         "rated": "R",
         "released": "26 Feb 2016",
         "runtime": "115 min",
-        "genre": ["Action",
+        "genre": ["action",
             "crime",
             "drama"
         ],

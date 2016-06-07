@@ -10,7 +10,7 @@
      peliculas.forEach(function (pelicula) {
        var li = document.createElement('li');
 
-       var template = '<a href="peliculas.html"><div>'+pelicula.title+'</div><img width="100px" src="'+pelicula.poster+'"></a>'+ '<p>'+ pelicula.genre + '</p>';
+       var template = '<a href="peliculas.html"><div class="pelicula">'+pelicula.title+'</div><img width="100px" src="'+pelicula.poster+'"></a>'+ '<p>'+ pelicula.genre + '</p>';
 
        // pelicula.genre.forEach(function (genre) {
        //   template += '<div>'+genre+'</div>'
@@ -30,16 +30,23 @@
    }
 
    var allTagsSinDuplicados = getSinDuplicados(allTags);
+    var abajitoSelect = $('#abajito');
 
    allTagsSinDuplicados.forEach(function (text) {
-     // console.log('hola', text);
-     // var newButton = document.createElement('button');
-     // newButton.innerText = text;
-    $("#abajito").on('change', function(){
+      var opt = document.createElement('option');
+      opt.value = text.toLowerCase();
+      opt.innerText = text.toLowerCase();
+      abajito.appendChild(opt);
+});
+
+    abajitoSelect.on('change', function (e){
+      if (!e.target.value) {
+        return dibujarPeliculas(data);
+      }
 
       var peliculasFiltradas = []
       for (var i = 0; i < data.length; i++) {
-       var encontrado = data[i].genre.indexOf(text) > -1;
+       var encontrado = data[i].genre.indexOf(e.target.value) > -1;
        if (encontrado) {
          peliculasFiltradas.push(data[i])
        }
@@ -50,22 +57,11 @@
         var seleccionado = $("#abajito option:selected").html();
         var text = seleccionado.toLowerCase()    
             dibujarPeliculas(peliculasFiltradas)
-          
-          // if (valor = "3") 
-          //     // dibujarPeliculas(peliculasFiltradas)
-          
-          // if (valor = "4") 
-          //     // dibujarPeliculas(peliculasFiltradas)
-          
-          // if (valor = "5") 
-
-     });
      // botones.appendChild(newButton);
-   });
+});
 
   function getSinDuplicados(arr) {
      var sinDuplicados = [];
-
      for (var i = 0; i <arr.length; i++) {
        //indexOf
        if (sinDuplicados.indexOf(arr[i]) === -1) {
