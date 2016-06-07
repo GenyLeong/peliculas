@@ -1,0 +1,133 @@
+<body>
+  <ul id="lista">
+  </ul>
+
+  <!--   <button id="test">action</button> -->
+  <div id="botones">
+  </div>
+
+  <script>
+   var data = [{
+     title: 'angry birds',
+     tags: ['kids', 'action'],
+     url: 'https://d21tktytfo9riy.cloudfront.net/wp-content/uploads/2016/02/30123957/characters-image.png',
+   }, {
+     title: 'xmen',
+     tags: ['action'],
+     url: 'https://d21tktytfo9riy.cloudfront.net/wp-content/uploads/2016/02/30123957/characters-image.png',
+   }, {
+     title: 'superman',
+     tags: ['terror'],
+     url: 'https://d21tktytfo9riy.cloudfront.net/wp-content/uploads/2016/02/30123957/characters-image.png',
+   }];
+
+   var lista = document.querySelector('#lista');
+
+    function dibujarPeliculas(peliculas) {
+     //limpiar
+     lista.innerHTML = '';
+
+     //dibujo
+     //peliculas esa un arreglo
+     peliculas.forEach(function (pelicula) {
+       var li = document.createElement('li');
+
+       var template = '<div>'+pelicula.title+'</div><img width="100px" src="'+pelicula.url+'">';
+
+       pelicula.tags.forEach(function (tag) {
+         template += '<div>'+tag+'</div>'
+       });
+
+       li.innerHTML = template;
+
+       lista.appendChild(li);
+     });
+   };
+
+   dibujarPeliculas(data);
+
+   //tag = action
+   //var test = document.querySelector('#test');
+   //test.addEventListener('click', function () {
+     ////peliculas filtradas por tag
+
+     //var peliculasFiltradas = data.filter(function (pelicula) {
+      // return pelicula.tags.indexOf('action') > -1;
+     //})
+     /*
+     var peliculasFiltradas = [];
+
+     for (var i = 0, len = data.length; i < len; i++) {
+       var encontrado = data[i].tags.indexOf('action') > -1;
+       if (encontrado) {
+         peliculasFiltradas.push(data[i])
+       }
+     }*/
+
+     //dibujarPeliculas(peliculasFiltradas);
+     /*      dibujarPeliculas([data[0], data[1]]); */
+   //});
+   /*    dibujarPeliculas([data[0], data[1]]); */
+
+   //obtener todos los tags
+   var allTags = [];
+   for (var i = 0; i < data.length; i++) {
+     allTags = allTags.concat(data[i].tags);
+   }
+
+   /*    console.log(allTags); */
+   var allTagsSinDuplicados = getSinDuplicados(allTags);
+
+   var botones = document.querySelector('#botones');
+
+   console.log(allTagsSinDuplicados);
+   allTagsSinDuplicados.forEach(function (text) {
+     console.log('hola', text);
+     var newButton = document.createElement('button');
+     newButton.innerText = text;
+
+     newButton.addEventListener('click', function() {
+      var peliculasFiltradas = []
+
+      for (var i = 0; i < data.length; i++) {
+       var encontrado = data[i].tags.indexOf(text) > -1;
+       if (encontrado) {
+         peliculasFiltradas.push(data[i])
+       }
+
+      dibujarPeliculas(peliculasFiltradas)
+
+     }
+
+     });
+     botones.appendChild(newButton);
+   });
+   //find del foreach
+
+
+   //crear una function que elimine duplicados de un arreglo
+   function getSinDuplicados(arr) {
+     var sinDuplicados = [];
+
+     for (var i = 0; i <arr.length; i++) {
+       //indexOf
+       if (sinDuplicados.indexOf(arr[i]) === -1) {
+         sinDuplicados.push(arr[i]);
+       }
+     }
+
+     return sinDuplicados;
+   }
+
+   /*
+   var a = [1, 2, 1];
+   var respuesta = getSinDuplicados(a);
+   console.log(respuesta);
+
+   var otro = getSinDuplicados(allTags);
+   console.log(otro);
+   */
+
+   //sinDuplicados [1, 2];
+  </script>
+</body>
